@@ -1,0 +1,48 @@
+<div class="sidenav">
+  <ul>
+    <li>
+      <a href="index.php"> dashboard </a>
+    </li>
+    <li>
+      <a href="index.php?action=pages"> pages </a>
+    </li>
+    <li>
+      <a href="#"> dummy </a>
+    </li>
+    <li>
+      <a href="#"> dummy </a>
+    </li>
+    <li>
+      <a href="#"> dummy </a>
+    </li>
+    <li>
+      <a href="#"> dummy </a>
+    </li>
+    <li>
+      <a href="#"> dummy </a>
+    </li>
+  </ul>
+</div>
+<div class="main">
+  <form method="post" action="index.php?action=pageAdd">
+    <input type="hidden" name="module" value="dashboard">
+    <input type="hidden" name="action" value="pageAdd">
+    <input type="hidden" name="postActionPage" value="1">
+    <label>Pagina titel</label>
+    <input type="text" name="page-title" value=""/>
+
+    <button type="submit" name="submit"> Pagina toevoegen </button>
+  </form>
+  <table>
+    <tr>
+      <th> titel </th>
+    </tr>
+    <?php foreach ($pageObj->fields as $key) { ?>
+      <tr>
+        <td> <?php echo $key['title']; ?> </td>
+        <td><a href="index.php?action=pageEdit&id=<?php echo $key['id']; ?>"> bewerken </a></td>
+        <td><a href="index.php?action=pageRemove&id=<?php echo $key['id']; ?>"> verwijderen </a></td>
+      </tr>
+    <?php } ?>
+  </table>
+</div>

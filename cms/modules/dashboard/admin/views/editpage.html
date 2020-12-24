@@ -1,0 +1,78 @@
+<button onclick="addParagraph()"> paragraaf </button>
+<button onclick="addheader1()"> header 1 </button>
+<button onclick="addheader2()"> header 2 </button>
+<button onclick="addheader3()"> header 3 </button>
+<button onclick="addheader4()"> header 4 </button>
+<button onclick="addheader5()"> header 5 </button>
+<button onclick="addheader6()"> header 6 </button>
+<div id="content" contenteditable="true" style="border: 1px solid #000">
+
+
+
+</div>
+<button id="saveContent"> Save page </button>
+<script>
+//add ellements
+function addParagraph(){
+  var content = document.getElementById('content');
+  var p = document.createElement("P");
+  p.innerHTML = "new paragraph";
+  content.appendChild(p);
+}
+
+function addheader1(){
+  var content = document.getElementById('content');
+  var h1 = document.createElement("H1");
+  h1.innerHTML = "new header 1";
+  content.appendChild(h1);
+}
+
+function addheader2(){
+  var content = document.getElementById('content');
+  var h2 = document.createElement("H2");
+  h2.innerHTML = "new header 2";
+  content.appendChild(h2);
+}
+
+function addheader3(){
+  var content = document.getElementById('content');
+  var h3 = document.createElement("H3");
+  h3.innerHTML = "new header 3";
+  content.appendChild(h3);
+}
+
+function addheader4(){
+  var content = document.getElementById('content');
+  var h4 = document.createElement("H4");
+  h4.innerHTML = "new header 4";
+  content.appendChild(h4);
+}
+
+function addheader5(){
+  var content = document.getElementById('content');
+  var h5 = document.createElement("H5");
+  h5.innerHTML = "new header 5";
+  content.appendChild(h5);
+}
+
+function addheader6(){
+  var content = document.getElementById('content');
+  var h6 = document.createElement("H6");
+  h6.innerHTML = "new header 6";
+  content.appendChild(h6);
+}
+
+</script>
+<script>
+  $(document).ready(function () {
+    $('#saveContent').on('click', function() {
+      var data = $('#content').html();
+      $.ajax({
+        url: "index.php?module=dashboard&action=saveEditedPage",
+        type: "POST",
+        data: {"data" : data },
+        dataType: 'json',
+      });
+    });
+  });
+</script>
